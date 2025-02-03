@@ -1,0 +1,55 @@
+<head>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" src="./socket.io/socket.io.js"></script>
+    <script type="module" src="./js/socketio.js"></script>
+    <script type="module" src="./js/index.js"></script>
+
+</head>
+<h1>Issues</h1>
+<table>
+    <thead>
+        <tr>
+            <th class="actions">Close</th>
+            <th class="actions1" >Title</th>
+            <th class="actions2">Content</th>
+        </tr>
+    </thead>
+    <tbody id="task-list">
+        <% if (viewData?.task?.length) { %>
+            <% for (const task of viewData.task) { %>
+                <tr data-id="<%= task.id %>">
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>
+                        <img src="<%= task.user.avatar_url %>" alt="User Avatar">
+                    </td>
+                    <td class="text-muted" >
+                        <%= task.title %>
+                    </td>
+                    <td class="text-muted" >
+                        <%= task.description %>
+                    </td>
+                </tr>
+                <% } %>
+                    <% } else { %>
+                        <tr>
+                        </tr>
+                        <% } %>
+    </tbody>
+</table>
+<!-- Template for the client script. The same as above, sort of. -->
+<template id="task-template">
+    <tr data-id="">
+        <td>
+            <input class="form-check-input" type="checkbox" />
+        </td>
+        <td>
+            <img class="avatar" src="" alt="User Avatar">
+        </td>
+        <td class="title">
+        </td>
+        <td class="description">
+        </td>
+    </tr>
+</template>
